@@ -1,0 +1,13 @@
+campo_agrupado;agrupa_por;tipo_agg;ds_tipo_agg
+Apólice;Cidade;nunique;Quantidade de
+Apólice;UF;nunique;Quantidade de
+Apólice;Número do Ramo;nunique;Quantidade de
+Apólice;Nome do Produto;nunique;Quantidade de
+Valor do Prêmio Comercial;Cidade;sum;Soma de
+Valor do Prêmio Comercial;UF;sum;Soma de
+Valor do Prêmio Comercial;Número do Ramo;sum;Soma de
+Valor do Prêmio Comercial;Nome do Produto;sum;Soma de
+Valor de IS;Cidade;sum;Soma de
+Valor de IS;UF;sum;Soma de
+Valor de IS;Número do Ramo;sum;Soma de
+Valor de IS;Nome do Produto;sum;Soma de

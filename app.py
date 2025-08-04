@@ -72,65 +72,129 @@ def plot_pareto(
 # ------------------------------
 # Início do app Streamlit
 # ------------------------------
-st.set_page_config(page_title="Análise de Pareto", layout="wide")
-st.title("📊 Dados de apólices e sinistros")
+st.set_page_config(page_title="Dados Unicoob", layout="wide")
 
-# Upload da configuração
-try:
-    df_config = pd.read_csv("analises_pareto_disponiveis.csv", sep=";")
-except Exception as e:
-    st.error(f"Erro ao carregar arquivo analises_pareto_disponiveis.csv: {e}")
-    st.stop()
+secoes = st.tabs(["Apólices", "Sinistros"])
+with secoes[0]:
+    st.title("📊 Dados de apólices")
+    # Upload da configuração
+    try:
+        df_config = pd.read_csv("analises_pareto_disponiveis_apolices.csv", sep=";")
+    except Exception as e:
+        st.error(f"Erro ao carregar arquivo analises_pareto_disponiveis_apolices.csv: {e}")
+        st.stop()
 
-if df_config.empty:
-    st.warning("Nenhuma configuração disponível para análise de Pareto.")
-    st.stop()
+    if df_config.empty:
+        st.warning("Nenhuma configuração disponível para análise de Pareto.")
+        st.stop()
 
-# Upload dos dados
-try:
-    df = pd.read_parquet("apolices.parquet")
-except Exception as e:
-    st.error(f"Erro ao carregar o arquivo 'apolices.parquet': {e}")
-    st.stop()
+    # Upload dos dados
+    try:
+        df = pd.read_parquet("apolices.parquet")
+    except Exception as e:
+        st.error(f"Erro ao carregar o arquivo 'apolices.parquet': {e}")
+        st.stop()
 
-st.subheader("Pré-visualização dos dados")
-st.dataframe(df.head(10), use_container_width=True)
-st.markdown("---")
+    st.subheader("Pré-visualização dos dados")
+    st.dataframe(df.head(10), use_container_width=True)
+    st.markdown("---")
 
-abas = st.tabs(["📉 Análise de Pareto"])
+    abas = st.tabs(["📉 Análise de Pareto", "Futuras Análises"])
 
-with abas[0]:
-    st.subheader("📊 Gráfico de Pareto baseado em configurações pré-definidas")
+    with abas[0]:
+        st.subheader("📊 Gráfico de Pareto baseado em configurações pré-definidas")
 
-    campo_agrupado_escolhido, df_config_filtrado = st.columns([2, 1])
-    with campo_agrupado_escolhido:
-        campo_agrupado_escolhido = st.selectbox(
-            "Selecione o campo a ser analisado",
-            df_config['campo_agrupado'].unique()
-        )
-    with df_config_filtrado:
-        df_config_filtrado = df_config[df_config['campo_agrupado'] == campo_agrupado_escolhido]
-        agrupa_por_escolhido = st.selectbox(
-            "Agrupar por",
-            df_config_filtrado['agrupa_por'].unique()
-        )
-
-    config_linha = df_config_filtrado[df_config_filtrado['agrupa_por'] == agrupa_por_escolhido].iloc[0]
-    tipo_agg = config_linha['tipo_agg']
-    ds_tipo_agg = config_linha['ds_tipo_agg']
-
-    if st.button("Gerar análise de Pareto"):
-        try:
-            fig, df_resultado = plot_pareto(
-                df,
-                agrupa_por=agrupa_por_escolhido,
-                campo_agrupado=campo_agrupado_escolhido,
-                tipo_agg=tipo_agg,
-                ds_tipo_agg=ds_tipo_agg
+        campo_agrupado_escolhido, df_config_filtrado = st.columns([2, 1])
+        with campo_agrupado_escolhido:
+            campo_agrupado_escolhido = st.selectbox(
+                "Selecione o campo a ser analisado",
+                df_config['campo_agrupado'].unique()
             )
-            st.subheader("📋 Tabela Resultante")
-            st.dataframe(df_resultado, use_container_width=True)
-            st.subheader("📈 Gráfico de Pareto")
-            st.pyplot(fig)
-        except Exception as e:
-            st.error(f"Erro ao gerar gráfico: {e}")
+        with df_config_filtrado:
+            df_config_filtrado = df_config[df_config['campo_agrupado'] == campo_agrupado_escolhido]
+            agrupa_por_escolhido = st.selectbox(
+                "Agrupar por",
+                df_config_filtrado['agrupa_por'].unique()
+            )
+
+        config_linha = df_config_filtrado[df_config_filtrado['agrupa_por'] == agrupa_por_escolhido].iloc[0]
+        tipo_agg = config_linha['tipo_agg']
+        ds_tipo_agg = config_linha['ds_tipo_agg']
+
+        if st.button("Gerar análise de Pareto"):
+            try:
+                fig, df_resultado = plot_pareto(
+                    df,
+                    agrupa_por=agrupa_por_escolhido,
+                    campo_agrupado=campo_agrupado_escolhido,
+                    tipo_agg=tipo_agg,
+                    ds_tipo_agg=ds_tipo_agg
+                )
+                st.subheader("📋 Tabela Resultante")
+                st.dataframe(df_resultado, use_container_width=True)
+                st.subheader("📈 Gráfico de Pareto")
+                st.pyplot(fig)
+            except Exception as e:
+                st.error(f"Erro ao gerar gráfico: {e}")
+
+with secoes[1]:
+    st.title("📊 Dados de sinistros")
+    # Upload da configuração
+    try:
+        df_config = pd.read_csv("analises_pareto_disponiveis_sinistros.csv", sep=";")
+    except Exception as e:
+        st.error(f"Erro ao carregar arquivo analises_pareto_disponiveis_sinistros.csv: {e}")
+        st.stop()
+
+    if df_config.empty:
+        st.warning("Nenhuma configuração disponível para análise de Pareto.")
+        st.stop()
+
+    # Upload dos dados
+    try:
+        df = pd.read_parquet("sinistros.parquet")
+    except Exception as e:
+        st.error(f"Erro ao carregar o arquivo 'sinistros.parquet': {e}")
+        st.stop()
+
+    st.subheader("Pré-visualização dos dados")
+    st.dataframe(df.head(10), use_container_width=True)
+    st.markdown("---")
+
+    abas = st.tabs(["📉 Análise de Pareto", "Futuras Análises"])
+
+    with abas[0]:
+        st.subheader("📊 Gráfico de Pareto baseado em configurações pré-definidas")
+
+        campo_agrupado_escolhido, df_config_filtrado = st.columns([2, 1])
+        with campo_agrupado_escolhido:
+            campo_agrupado_escolhido = st.selectbox(
+                "Selecione o campo a ser analisado",
+                df_config['campo_agrupado'].unique()
+            )
+        with df_config_filtrado:
+            df_config_filtrado = df_config[df_config['campo_agrupado'] == campo_agrupado_escolhido]
+            agrupa_por_escolhido = st.selectbox(
+                "Agrupar por",
+                df_config_filtrado['agrupa_por'].unique()
+            )
+
+        config_linha = df_config_filtrado[df_config_filtrado['agrupa_por'] == agrupa_por_escolhido].iloc[0]
+        tipo_agg = config_linha['tipo_agg']
+        ds_tipo_agg = config_linha['ds_tipo_agg']
+
+        if st.button("Gerar análise de Pareto "):
+            try:
+                fig, df_resultado = plot_pareto(
+                    df,
+                    agrupa_por=agrupa_por_escolhido,
+                    campo_agrupado=campo_agrupado_escolhido,
+                    tipo_agg=tipo_agg,
+                    ds_tipo_agg=ds_tipo_agg
+                )
+                st.subheader("📋 Tabela Resultante")
+                st.dataframe(df_resultado, use_container_width=True)
+                st.subheader("📈 Gráfico de Pareto")
+                st.pyplot(fig)
+            except Exception as e:
+                st.error(f"Erro ao gerar gráfico: {e}")
