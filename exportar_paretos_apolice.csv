@@ -1,0 +1,10 @@
+campo_agrupado;agrupa_por;tipo_agg;ds_tipo_agg;nome_do_arquivo;nome_da_aba
+Apólice;UF;nunique;Quantidade de;pareto_apolice.xlsx;apolices_UF
+Apólice;Número do Ramo;nunique;Quantidade de;pareto_apolice.xlsx;apolices_ramo
+Apólice;Nome do Produto;nunique;Quantidade de;pareto_apolice.xlsx;apolices_produto
+Valor do Prêmio Comercial;UF;sum;Soma de;pareto_apolice.xlsx;premio_UF
+Valor do Prêmio Comercial;Número do Ramo;sum;Soma de;pareto_apolice.xlsx;premio_ramo
+Valor do Prêmio Comercial;Nome do Produto;sum;Soma de;pareto_apolice.xlsx;premio_produto
+Valor de IS;UF;sum;Soma de;pareto_apolice.xlsx;IS_UF
+Valor de IS;Número do Ramo;sum;Soma de;pareto_apolice.xlsx;IS_ramo
+Valor de IS;Nome do Produto;sum;Soma de;pareto_apolice.xlsx;IS_produto
