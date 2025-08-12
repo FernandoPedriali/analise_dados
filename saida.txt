@@ -1,0 +1,138 @@
+
+@app.cell
+def _(pd):
+    df_missing_pct = pd.read_csv("analise_gepeto\analise_apolices\data\01_missing_pct.csv")
+    df_missing_pct
+    return
+
+@app.cell
+def _(pd):
+    df_emissoes_mensal = pd.read_csv("analise_gepeto\analise_apolices\data\02_emissoes_mensal.csv")
+    df_emissoes_mensal
+    return
+
+@app.cell
+def _(pd):
+    df_inicio_vigencia_mensal = pd.read_csv("analise_gepeto\analise_apolices\data\03_inicio_vigencia_mensal.csv")
+    df_inicio_vigencia_mensal
+    return
+
+@app.cell
+def _(pd):
+    df_fim_vigencia_mensal = pd.read_csv("analise_gepeto\analise_apolices\data\04_fim_vigencia_mensal.csv")
+    df_fim_vigencia_mensal
+    return
+
+@app.cell
+def _(pd):
+    df_top_motivos_cancel = pd.read_csv("analise_gepeto\analise_apolices\data\05_top_motivos_cancel.csv")
+    df_top_motivos_cancel
+    return
+
+@app.cell
+def _(pd):
+    df_cancel_por_produto = pd.read_csv("analise_gepeto\analise_apolices\data\06_cancel_por_produto.csv")
+    df_cancel_por_produto
+    return
+
+@app.cell
+def _(pd):
+    df_cancel_por_ramo_grupo = pd.read_csv("analise_gepeto\analise_apolices\data\07_cancel_por_ramo_grupo.csv")
+    df_cancel_por_ramo_grupo
+    return
+
+@app.cell
+def _(pd):
+    df_cancel_por_uf = pd.read_csv("analise_gepeto\analise_apolices\data\08_cancel_por_uf.csv")
+    df_cancel_por_uf
+    return
+
+@app.cell
+def _(pd):
+    df_top_produtos = pd.read_csv("analise_gepeto\analise_apolices\data\09_top_produtos.csv")
+    df_top_produtos
+    return
+
+@app.cell
+def _(pd):
+    df_top_ramo_grupo = pd.read_csv("analise_gepeto\analise_apolices\data\10_top_ramo_grupo.csv")
+    df_top_ramo_grupo
+    return
+
+@app.cell
+def _(pd):
+    df_top_uf = pd.read_csv("analise_gepeto\analise_apolices\data\11_top_uf.csv")
+    df_top_uf
+    return
+
+@app.cell
+def _(pd):
+    df_premio_por_produto_top = pd.read_csv("analise_gepeto\analise_apolices\data\12_premio_por_produto_top.csv")
+    df_premio_por_produto_top
+    return
+
+@app.cell
+def _(pd):
+    df_premio_por_ramo_top = pd.read_csv("analise_gepeto\analise_apolices\data\13_premio_por_ramo_top.csv")
+    df_premio_por_ramo_top
+    return
+
+@app.cell
+def _(pd):
+    df_premio_por_uf_top = pd.read_csv("analise_gepeto\analise_apolices\data\14_premio_por_uf_top.csv")
+    df_premio_por_uf_top
+    return
+
+@app.cell
+def _(pd):
+    df_perfil_sexo = pd.read_csv("analise_gepeto\analise_apolices\data\15_perfil_sexo.csv")
+    df_perfil_sexo
+    return
+
+@app.cell
+def _(pd):
+    df_perfil_tipo_pessoa = pd.read_csv("analise_gepeto\analise_apolices\data\16_perfil_tipo_pessoa.csv")
+    df_perfil_tipo_pessoa
+    return
+
+@app.cell
+def _(pd):
+    df_perfil_faixa_etaria = pd.read_csv("analise_gepeto\analise_apolices\data\17_perfil_faixa_etaria.csv")
+    df_perfil_faixa_etaria
+    return
+
+@app.cell
+def _(pd):
+    df_produtos_maior_cancel = pd.read_csv("analise_gepeto\analise_apolices\data\18_produtos_maior_cancel.csv")
+    df_produtos_maior_cancel
+    return
+
+@app.cell
+def _(pd):
+    df_uf_maior_cancel = pd.read_csv("analise_gepeto\analise_apolices\data\19_uf_maior_cancel.csv")
+    df_uf_maior_cancel
+    return
+
+@app.cell
+def _(pd):
+    df_join_por_apolice = pd.read_csv("analise_gepeto\analise_apolices\data\20_join_por_apolice.csv")
+    df_join_por_apolice
+    return
+
+@app.cell
+def _(pd):
+    df_sinistralidade_por_produto = pd.read_csv("analise_gepeto\analise_apolices\data\21_sinistralidade_por_produto.csv")
+    df_sinistralidade_por_produto
+    return
+
+@app.cell
+def _(pd):
+    df_sinistralidade_por_uf = pd.read_csv("analise_gepeto\analise_apolices\data\22_sinistralidade_por_uf.csv")
+    df_sinistralidade_por_uf
+    return
+
+@app.cell
+def _(pd):
+    df_sinistralidade_por_status = pd.read_csv("analise_gepeto\analise_apolices\data\23_sinistralidade_por_status.csv")
+    df_sinistralidade_por_status
+    return
