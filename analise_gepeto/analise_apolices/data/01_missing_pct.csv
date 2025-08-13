@@ -1,6 +1,5 @@
 ,0
 Motivo do Cancelamento,0.7398674724282047
-Data de Emissão (parsed),0.5937326693614321
 Endosso Associado,0.4690950047739656
 Sexo,0.22702350391922566
 Data de Nascimento,0.22271835889930078
@@ -15,6 +14,7 @@ Status da Apólice,5.717324063645251e-06
 Código do Produto,0.0
 Nome do Produto,0.0
 Unnamed: 0,0.0
+Data de Emissão (parsed),0.0
 Tipo de Pessoa,0.0
 Data de Fim da Vigência (parsed),0.0
 Valor do Prêmio Comercial (num),0.0

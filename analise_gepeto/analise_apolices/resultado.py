@@ -43,7 +43,7 @@ def _(alt, df_emissoes_mensal):
             ]
         )
         .properties(
-            title='Emisões ensais',
+            title='Emisões mensais',
             config={
                 'axis': {
                     'grid': True
@@ -227,6 +227,28 @@ def _(pd):
 
 
 @app.cell
+def _(
+    pd,
+    taxa_incidencia,
+    taxa_sinistralidade,
+    total_apolices,
+    total_premio,
+    total_sinistros,
+    total_sinistros_valor,
+):
+    nova_linha = pd.DataFrame([{
+        'produto': 'TOTAL',
+        'apolices': total_apolices,
+        'apolices_com_sinistro': total_sinistros,
+        'premio_total': total_premio,
+        'sinistros_total': total_sinistros_valor,
+        'incidencia_sinistro': taxa_incidencia,
+        'sinistralidade': taxa_sinistralidade
+    }])
+    return
+
+
+@app.cell
 def _(mo):
     mo.md(r"""# Sinistralidade por produto""")
     return
@@ -236,7 +258,44 @@ def _(mo):
 def _(pd):
     df_sinistralidade_por_produto = pd.read_csv("data/21_sinistralidade_por_produto.csv")
     df_sinistralidade_por_produto
+    return (df_sinistralidade_por_produto,)
+
+
+@app.cell
+def _(alt, df_sinistralidade_por_produto):
+    # replace _df with your data source
+    _chart = (
+        alt.Chart(df_sinistralidade_por_produto)
+        .mark_bar()
+        .encode(
+            x=alt.X(field='produto', type='nominal'),
+            y=alt.Y(field='sinistros_total', type='quantitative', aggregate='mean'),
+            tooltip=[
+                alt.Tooltip(field='produto'),
+                alt.Tooltip(field='sinistros_total', aggregate='mean', format=',.2f')
+            ]
+        )
+        .properties(
+            height=290,
+            width='container',
+            config={
+                'axis': {
+                    'grid': False
+                }
+            }
+        )
+    )
+    _chart
     return
+
+
+app._unparsable_cell(
+    r"""
+    total_unicoob = {}
+    = df_sinistralidade_por_produto.sum
+    """,
+    name="_"
+)
 
 
 @app.cell
@@ -254,7 +313,7 @@ def _(pd):
 
 @app.cell
 def _(mo):
-    mo.md(r"""# Status das apólices sinistradas """)
+    mo.md(r"""# Status das apólices sinistradas""")
     return
 
 
