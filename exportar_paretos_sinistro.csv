@@ -1,9 +1,0 @@
-campo_agrupado;agrupa_por;tipo_agg;ds_tipo_agg;nome_do_arquivo;nome_da_aba
-Número do Sinistro;Nome da Cobertura;nunique;quantidade de;pareto_sinistro.xlsx;sinistro_cobertura
-Número do Sinistro;ID do Ramo;nunique;quantidade de;pareto_sinistro.xlsx;sinistro_ramo
-Número do Sinistro;Nome do Movimento de Sinistro;nunique;quantidade de;pareto_sinistro.xlsx;sinistro_tipo de movimento
-Número do Sinistro;UF da Ocorrência do Sinistro;nunique;quantidade de;pareto_sinistro.xlsx;sinistro_uf
-Valor do Evento de Sinistro;Nome da Cobertura;sum;total de;pareto_sinistro.xlsx;valor_cobertura
-Valor do Evento de Sinistro;ID do Ramo;sum;total de;pareto_sinistro.xlsx;valor_ramo
-Valor do Evento de Sinistro;Nome do Movimento de Sinistro;sum;total de;pareto_sinistro.xlsx;valor_tipo de movimento
-Valor do Evento de Sinistro;UF da Ocorrência do Sinistro;sum;total de;pareto_sinistro.xlsx;valor_uf

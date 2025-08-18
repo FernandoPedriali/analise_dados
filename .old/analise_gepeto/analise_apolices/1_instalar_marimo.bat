@@ -1,0 +1,1 @@
+pip install marimo pandas numpy ipython altair
